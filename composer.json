@@ -28,9 +28,5 @@
 			"mstodulski\\http\\": "src",
 			"test\\http\\helpers\\": "tests/helpers"
 		}
-	},
-	"bin": ["bin/morm"],
-	"require-dev": {
-		"ext-apcu": "*"
 	}
 }
