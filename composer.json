@@ -1,0 +1,36 @@
+{
+	"name": "mstodulski/forms",
+	"license": "MIT",
+	"description": "",
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/mstodulski/router.git"
+		}
+	],
+	"require": {
+		"php": ">=8.0",
+		"phpunit/phpunit": "9.5.*",
+		"symfony/var-dumper": "5.3.*",
+		"mstodulski/router": "1.0.*"
+	},
+	"keywords": ["http", "protocol", "router"],
+	"homepage": "https://devsprint.pl",
+	"authors": [
+		{
+			"name": "Marcin Stodulski",
+			"homepage": "https://devsprint.pl",
+			"role": "Developer"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"mstodulski\\http\\": "src",
+			"test\\http\\helpers\\": "tests/helpers"
+		}
+	},
+	"bin": ["bin/morm"],
+	"require-dev": {
+		"ext-apcu": "*"
+	}
+}

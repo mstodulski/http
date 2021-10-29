@@ -1,0 +1,16 @@
+<Files *.php>
+	order deny,allow
+	deny from all
+</Files>
+
+<Files index.php>
+	allow from all
+</Files>
+
+Options FollowSymLinks
+RewriteEngine On
+RewriteBase /http/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^[^.]+$ index.php [NC,L]
