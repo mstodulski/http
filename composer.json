@@ -12,7 +12,13 @@
 		"php": ">=8.0",
 		"phpunit/phpunit": "9.5.*",
 		"symfony/var-dumper": "5.3.*",
-		"mstodulski/router": "1.0.*"
+		"mstodulski/router": "1.0.*",
+		"incenteev/composer-parameter-handler": "2.1.*"
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"mstodulski\\http\\InstallService::install"
+		]
 	},
 	"keywords": ["http", "protocol", "router"],
 	"homepage": "https://devsprint.pl",
@@ -25,8 +31,7 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"mstodulski\\http\\": "src",
-			"test\\http\\helpers\\": "tests/helpers"
+			"mstodulski\\http\\": "src"
 		}
 	}
 }
