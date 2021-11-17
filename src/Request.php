@@ -23,7 +23,7 @@ class Request {
     private ?ParametersCollection $cookies;
     private ?ParametersCollection $files;
 
-    public function __construct(array $routes)
+    public function __construct(array $routes, Router $router = null)
     {
         session_start();
 
@@ -33,8 +33,10 @@ class Request {
             $this->headers->addParameter($name, $value);
         }
 
-        $router = new Router();
-        $router->defineRoutes($routes);
+        if ($router === null) {
+            $router = new Router();
+            $router->defineRoutes($routes);
+        }
         $route = $router->getRouteByLink($this->getNiceUrl(), $_SERVER['REQUEST_METHOD']);
 
         $this->attributes = new ParametersCollection();
