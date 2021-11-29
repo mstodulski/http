@@ -10,6 +10,7 @@
 
 namespace mstodulski\http;
 
+use mstodulski\router\RouteException;
 use mstodulski\router\Router;
 
 class Request {
@@ -23,6 +24,7 @@ class Request {
     private ?ParametersCollection $cookies;
     private ?ParametersCollection $files;
 
+    /** @throws RouteException */
     public function __construct(array $routes, Router $router = null)
     {
         session_start();
@@ -37,7 +39,12 @@ class Request {
             $router = new Router();
             $router->defineRoutes($routes);
         }
-        $route = $router->getRouteByLink($this->getNiceUrl(), $_SERVER['REQUEST_METHOD']);
+
+        $niceUrl = $this->getNiceUrl();
+        $niceUrl = explode('?', $niceUrl);
+        $niceUrl = $niceUrl[0];
+
+        $route = $router->getRouteByLink($niceUrl, $_SERVER['REQUEST_METHOD']);
 
         $this->attributes = new ParametersCollection();
         foreach ($_GET as $name => $value)
@@ -174,4 +181,3 @@ class Request {
         return $niceUrl;
     }
 }
-

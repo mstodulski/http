@@ -9,7 +9,7 @@
 		}
 	],
 	"require": {
-		"php": ">=8.0",
+		"php": ">=8.1",
 		"phpunit/phpunit": "9.5.*",
 		"symfony/var-dumper": "5.3.*",
 		"mstodulski/router": "1.0.*",
