@@ -6,6 +6,10 @@
 		{
 			"type": "vcs",
 			"url": "https://github.com/mstodulski/router.git"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/mstodulski/session.git"
 		}
 	],
 	"require": {
@@ -13,6 +17,7 @@
 		"phpunit/phpunit": "9.5.*",
 		"symfony/var-dumper": "5.3.*",
 		"mstodulski/router": "1.0.*",
+		"mstodulski/session": "1.0.*",
 		"incenteev/composer-parameter-handler": "2.1.*"
 	},
 	"scripts": {

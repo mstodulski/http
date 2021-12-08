@@ -12,6 +12,7 @@ namespace mstodulski\http;
 
 use mstodulski\router\RouteException;
 use mstodulski\router\Router;
+use mstodulski\session\Session;
 
 class Request {
 
@@ -27,7 +28,7 @@ class Request {
     /** @throws RouteException */
     public function __construct(array $routes, Router $router = null)
     {
-        session_start();
+        Session::run();
 
         $headers = apache_request_headers();
         $this->headers = new ParametersCollection();
@@ -57,6 +58,9 @@ class Request {
         $this->attributes->addParameter('ajaxCall', $this->isAjaxCall());
         $this->attributes->addParameter('method', $this->getRequestMethod());
         $this->attributes->addParameter('ip', $this->getRequestIpNumber());
+        if (isset($route['lang'])) {
+            $this->attributes->addParameter('lang', $route['lang']);
+        }
 
         $this->parameters = new ParametersCollection();
         foreach ($_GET as $name => $value)
